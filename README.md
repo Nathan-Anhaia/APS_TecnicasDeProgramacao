@@ -1,8 +1,6 @@
 # APS_Técnicas de Programação
 
-
-Trabalho em grupo
-
+Nathan do Vale Anhaia da Silva - 21309949
 
 João Juliasz de Morais - 21336475
 
