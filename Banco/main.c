@@ -1,12 +1,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "banco.h"
+#include "cliente.h"
+#include "gerenciaClientes.h"
+#include "conta.h"
+
 int main() {
 
     int opcao=0;
 
     while(opcao != 9){
-        printf("=== Menu do Banco ===");
+        printf("\n=== Menu do Banco ===");
         printf("\n1 - Cadastrar Cliente");
         printf("\n2 - Cadastrar Conta");
         printf("\n3 - Listar Conta");
@@ -47,9 +52,10 @@ int main() {
                 break;
             case 9:
                 // Sair
+                printf("Saindo...");
                 break;
             default:
-                printf("Erro, opcao inválida");
+                printf("Erro, opcao invalida");
                 break;
         }
     }
