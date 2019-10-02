@@ -3,8 +3,11 @@
 
 #include "banco.h"
 #include "cliente.h"
-#include "gerenciaClientes.h"
+#include "gerenciaCliente.h"
 #include "conta.h"
+
+TCliente lista_cliente [10];
+TConta lista_conta [10];
 
 int main() {
 
@@ -40,6 +43,7 @@ int main() {
                 break;
             case 5:
                 // Depositar
+                // depositar(TConta conta,float valor);
                 break;
             case 6:
                 // Debitar (Sacar)
