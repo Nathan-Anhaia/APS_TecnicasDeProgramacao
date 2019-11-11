@@ -1,25 +1,24 @@
 #ifndef CLIENTE_H_INCLUDED
 #define CLIENTE_H_INCLUDED
 
-typedef struct Cliente
-{
-
-    char nome[10];
-    char cpf[11];
-    char telefone[10];
-
+typedef struct Cliente {
+    int id;
+    char nome[10], cpf[11], telefone[10];
 }TCliente;
 
-void imprimirCliente(TCliente cliente){
+TCliente cliente[100];
 
-    for (int i =0; i<10; i++){
-
-        if (strcmp (cliente, lista_conta[i]==0)){
-
-        printf("Cliente: %s", cliente.nome);
-        printf("CPF: %s", cliente.cpf);
-        printf("Cliente: %s", cliente.telefone);
-
+void imprimirCliente(int idCliente)
+{
+    for (int i=0;i<100;i++)
+    {
+        if(idCliente==cliente[i].id) 
+        {        
+            printf("\nNome: %s", cliente[i].nome);
+            printf("\nCPF: %s", cliente[i].cpf);
+            printf("\nTelefone: %s", cliente[i].telefone);
+            printf("\nID: %i", cliente[i].id);
+            break;
         }
     }
 }
