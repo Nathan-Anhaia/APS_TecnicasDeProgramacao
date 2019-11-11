@@ -1,30 +1,52 @@
-#include "stdlib.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
-TCliente clientes[10];
-int totalClientes =0;
+#include "cliente.h"
 
-void adicionarCliente(TCliente clientes){
+int idCliente=0;
 
-    for (int i = 0; i<10; i++){
-        if (clientes != lista_cliente[i]){
-            if (lista_cliente[i] == '\0'){
-            strcpy (lista_cliente[i], clientes[i]);
-            }
-        }else {
-            printf("Cliente nao cadastrado ! \n");
+int existeCPF(char cpf[11])
+{
+    int j;
+    for (j=0;j<100;j++)
+    {
+        if (strcmp(cpf, cliente[j].cpf)==0)
+        {
+            return 1;
+            break;
+        } 
+        else
+        {
+            return 0;
         }
+        
+    }
 }
-int existeCPF(TCliente clientes.cpf){
 
-    for (int j = 0; j<10; j++){
+void cadastrarCliente(char nome[10], char cpf[11], char telefone[10])
+{    
+    strcpy(cliente[idCliente].nome, nome);
+    strcpy(cliente[idCliente].cpf, cpf);
+    strcpy(cliente[idCliente].telefone, telefone);
+    cliente[idCliente].id=idCliente;
+    
+    printf("\nCadastro realizado com sucesso! \nNome: %s\nCPF: %s\nTelefone: %s\nID: %i\n", cliente[idCliente].nome, cliente[idCliente].cpf, cliente[idCliente].telefone, idCliente);
+    idCliente++;
+}
 
-        if (strcmp (lista_cliente[j].cpf, clientes.cpf) == 0){
 
-            printf("Ja existe um usuario com este CPF !\n");
-        } else{
-
-            printf("Nao existe este CPF !\n")
+void listarClientes()
+{
+    for (int i=0;i<100;i++)
+    {
+        if(strcmp(cliente[i].nome, "")!=0) 
+        {        
+            printf("\nNome: %s", cliente[i].nome);
+            printf("\nCPF: %s", cliente[i].cpf);
+            printf("\nTelefone: %s", cliente[i].telefone);
+            printf("\nID: %i", cliente[i].id);
+            printf("\n");     
         }
     }
 }
-char* listarClientes();
