@@ -12,7 +12,7 @@
 typedef struct Conta{
     int numero, ativa;
     char dataAbertura[10];
-    float saldo;
+    float saldo, chequeEspecial;
 }TConta;
 
 TConta conta[100];
@@ -24,13 +24,28 @@ void depositar(int id, float valor)
     printf("\nR$%.2f depositados na conta de %s com sucesso! \nSaldo Atual: R$%.2f", valor, cliente[id].nome, conta[id].saldo);
 }
 
-
-int debitar(int id, float valor)
+void debitar(int id, float valor)
 {
     if (conta[id].saldo>=valor)
     {
         conta[id].saldo-=valor;
         printf("\nR$%.2f retirados da conta de %s com sucesso! \nSaldo Atual: R$%.2f", valor, cliente[id].nome, conta[id].saldo);
+    }
+    else if (conta[id].saldo<valor&&conta[id].chequeEspecial>0)
+    {
+        if (valor<=conta[id].chequeEspecial+conta[id].saldo) 
+        {
+            float difValor=valor;
+            if (conta[id].saldo>0) difValor=valor-conta[id].saldo;
+            conta[id].saldo-=valor;
+            printf("%.2f", difValor);
+            conta[id].chequeEspecial-=difValor;
+            printf("\nR$%.2f retirados da conta de %s com sucesso! \nSaldo Atual: R$%.2f\nCheque Especial: R$%.2f", valor, cliente[id].nome, conta[id].saldo, conta[id].chequeEspecial);
+        }
+        else
+        {
+            printf("Erro: Saldo insuficiente.");
+        }
     }
     else
     {
@@ -38,24 +53,18 @@ int debitar(int id, float valor)
     }
 }
 
-/*
-int transferir(TConta origem, TConta destino, float quantia)
+void transferir(int idOrigem, int idDestino, float valor)
 {
-    int leiaOrigem, leiaDestino;
-
-    for (leiaOrigem=0; leiaOrigem<10; leiaOrigem++)
-    {
-        if () {
-            printf("Digite o CPF da sua conta: \n");
-            scanf("%d", &origem);
-
-            printf("Digite o CPF da conta para qual sera feita a transferencia\n");
-            scanf("%d", &destino);
-            printf("Digite a quantia que sera transferida\n");
-            scanf("%f", quantia);
+        if (conta[idOrigem].saldo>=valor)
+        {
+            conta[idOrigem].saldo-=valor;
+            conta[idDestino].saldo+=valor;
+            printf("\nR$%.2f enviados para a conta de %s com sucesso! \nSeu saldo atual: R$%.2f", valor, cliente[idDestino].nome, conta[idOrigem].saldo);
         }
-    }
-
+        else
+        {
+            printf("Erro: Saldo insuficiente.");
+        }    
 }
-*/
+
 #endif // CONTA_H_INCLUDED

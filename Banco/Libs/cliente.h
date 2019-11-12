@@ -10,7 +10,8 @@ TCliente cliente[100];
 
 void imprimirCliente(int idCliente)
 {
-    for (int i=0;i<100;i++)
+    int i;
+    for (i=0;i<100;i++)
     {
         if(idCliente==cliente[i].id) 
         {        

@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "cliente.h"
+#include "conta.h"
 
 int idCliente=0;
 
@@ -30,7 +31,8 @@ void cadastrarCliente(char nome[10], char cpf[11], char telefone[10])
     strcpy(cliente[idCliente].cpf, cpf);
     strcpy(cliente[idCliente].telefone, telefone);
     cliente[idCliente].id=idCliente;
-    
+    conta[idCliente].ativa=0;
+
     printf("\nCadastro realizado com sucesso! \nNome: %s\nCPF: %s\nTelefone: %s\nID: %i\n", cliente[idCliente].nome, cliente[idCliente].cpf, cliente[idCliente].telefone, idCliente);
     idCliente++;
 }
@@ -38,7 +40,8 @@ void cadastrarCliente(char nome[10], char cpf[11], char telefone[10])
 
 void listarClientes()
 {
-    for (int i=0;i<100;i++)
+    int i;
+    for (i=0;i<100;i++)
     {
         if(strcmp(cliente[i].nome, "")!=0) 
         {        
@@ -49,4 +52,5 @@ void listarClientes()
             printf("\n");     
         }
     }
+    
 }
